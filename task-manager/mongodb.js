@@ -15,12 +15,22 @@ MongoClient.connect(connectionURL, {useUnifiedTopology: true, useNewUrlParser: t
 
     const db = client.db(databaseName)
 
-    db.collection('task').deleteMany({
-        description: 'Azul'
-    }).then((result) => {
-        console.log(result)
-    }).catch((error) => {
-        console.log(error)
+    const doc =  {name: "Roshan", age: 22}
+
+    db.collection('task').insertOne(doc, (error, result) => {
+        if(error){
+            console.log('No se pudo insertar el usuario')
+        }
+
+        console.log('Documento insertado')
     })
+
+    // db.collection('task').deleteMany({
+    //     description: 'Azul'
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
 })
 

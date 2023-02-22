@@ -27,7 +27,7 @@ MongoClient.connect(connectionURL, {useUnifiedTopology: true, useNewUrlParser: t
 
     // db.collection('task').deleteMany({
     //     description: 'Azul'
-    // }).then((result) => {
+    // }).then((result) => {    
     //     console.log(result)
     // }).catch((error) => {
     //     console.log(error)

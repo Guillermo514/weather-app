@@ -6,6 +6,10 @@ require('./db/mongoose')
 const app = express()
 const port = process.env.PORT || 3000
 
+// app.use((req, res, next) => {
+//     res.status(503).send('Maintenance Mode, Try Later')
+// })
+
 app.use(express.json())
 app.use(userRoute)
 app.use(taskRoute)
@@ -14,17 +18,14 @@ app.listen(port, () => {
     console.log('Servidor en el puerto ' + port)
 })
 
-const bcryt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const myFuction = async () => {
-    const password = 'ComPass!'
-    const hashedPassword = await bcryt.hash(password, 8)
+    const token = jwt.sign({ _id: 'abc12345' }, 'esteesunnuevocurso', { expiresIn: '1 days' })
+    console.log(token)
 
-    console.log(password)
-    console.log(hashedPassword)
-
-    const isMatch = await bcryt.compare('ComPass!', hashedPassword)
-    console.log(isMatch)
+    const data = jwt.verify(token, 'esteesunnuevocurso')
+    console.log(data)
 }
 
 myFuction()

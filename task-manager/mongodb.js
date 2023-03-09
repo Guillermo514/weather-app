@@ -8,7 +8,7 @@ const id = new ObjectID()
 
 
 //mongoose.connect("paste db link", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
-MongoClient.connect(connectionURL, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }, (error, client) => {
+MongoClient.connect(connectionURL, (error, client) => {
     if (error) {
         return console.log('Unable to connect to database!')
     }
